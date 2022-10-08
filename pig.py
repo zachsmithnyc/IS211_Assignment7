@@ -47,12 +47,16 @@ class Player:
             # print real total
             print(f"Roll: {die}")
             print()
+            print()
             print(f"Points this turn: {turn_total}")
+            print()
             print(f"Score on hold: {self.total + turn_total}")
+            print()
             print(f"Current Score: {self.total}")
             print()
             
             roll_hold = input("Roll(r) or Hold(h)? ").lower()
+            print()
             print()
 
         if roll_hold == 'h':
@@ -72,10 +76,7 @@ class Game:
         self.winner = None
 
     def check_winner(self):
-        """
-        Returns true if there is winner
-        :return:
-        """
+
         for player in self.players:
             if player.total >= 100:
                 self.winner = player
@@ -92,8 +93,12 @@ class Game:
                  current_player = player
                  current_player.play_turn()
         # show the winner
-        self.winner.show
-
+        while self.check_winner():
+            print()
+            print()
+            print(f"{self.winner.name} is victorious!")
+            exit()
+    
 
 
 if __name__ == '__main__':
