@@ -1,5 +1,6 @@
 import argparse
 import random
+import sys
 
 
 def throw_the_die(sides=6):
@@ -27,10 +28,11 @@ class Player:
         """
         turn_total = 0
         roll_hold = 'r'
-        while roll_hold != "h":
+        while roll_hold == "r":
             die = throw_the_die()
             if die == 1:
-                # scratch - let the user know!
+                print(f"{self.name} Scratched!")
+                self.show
                 break
 
             turn_total += die
@@ -38,11 +40,19 @@ class Player:
             # print turn_total,
             # print possible total if I hold, total + turn_total
             # print real total
+            print(f"Roll: {die}")
+            print(f"Points this turn: {turn_total}")
+            print(f"Score on hold: {self.total + turn_total}")
+            print(f"Current Score: {self.total}")
+            
             roll_hold = input("Roll(r) or Hold(h)? ").lower()
 
         if roll_hold == 'h':
             # update the player's total
             self.total += turn_total
+
+        if roll_hold == "x":
+            exit()
 
         self.show()
 
@@ -72,6 +82,7 @@ class Game:
             # change current_player to the next player
 
         # show the winner
+        self.winner.show
 
 
 if __name__ == '__main__':
