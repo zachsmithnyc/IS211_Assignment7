@@ -40,6 +40,8 @@ class Player:
                 self.show
                 break
 
+            
+
             turn_total += die
             # Print some information to the user. My recommendation is to:
             # print turn_total,
@@ -58,6 +60,7 @@ class Player:
             roll_hold = input("Roll(r) or Hold(h)? ").lower()
             print()
             print()
+
 
         if roll_hold == 'h':
             # update the player's total
@@ -93,12 +96,10 @@ class Game:
             for player in self.players:
                  current_player = player
                  current_player.play_turn()
-
-        print()
-        print()
-        print(f"{self.winner.name} is victorious!") 
     
-
+        print()
+        print()
+        print(f"{self.winner.name} is victorious!")
 
 if __name__ == '__main__':
     p1 = Player("John")
