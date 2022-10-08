@@ -86,18 +86,17 @@ class Game:
 
 
     def play_game(self):
-        current_player = self.players[0]
+        current_player = self.players[0] 
+
         while not self.check_winner():
             # play the game
             for player in self.players:
                  current_player = player
                  current_player.play_turn()
-        # show the winner
-        while self.check_winner():
-            print()
-            print()
-            print(f"{self.winner.name} is victorious!")
-            exit()
+
+        print()
+        print()
+        print(f"{self.winner.name} is victorious!") 
     
 
 
