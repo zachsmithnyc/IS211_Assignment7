@@ -14,6 +14,7 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.total = 0
+        
 
     def show(self):
         print(f"{self}")
@@ -22,10 +23,14 @@ class Player:
         """String representation"""
         return f"{self.name}'s Total = {self.total}"
 
-    def turn(self):
+    def play_turn(self):
         """
         Play one turn
         """
+       
+        print(f"Current player {self.name}")
+        print()
+        print()
         turn_total = 0
         roll_hold = 'r'
         while roll_hold == "r":
@@ -41,15 +46,19 @@ class Player:
             # print possible total if I hold, total + turn_total
             # print real total
             print(f"Roll: {die}")
+            print()
             print(f"Points this turn: {turn_total}")
             print(f"Score on hold: {self.total + turn_total}")
             print(f"Current Score: {self.total}")
+            print()
             
             roll_hold = input("Roll(r) or Hold(h)? ").lower()
+            print()
 
         if roll_hold == 'h':
             # update the player's total
             self.total += turn_total
+            
 
         if roll_hold == "x":
             exit()
@@ -74,15 +83,17 @@ class Game:
 
         return False
 
+
     def play_game(self):
         current_player = self.players[0]
         while not self.check_winner():
             # play the game
-            current_player.turn()
-            # change current_player to the next player
-
+            for player in self.players:
+                 current_player = player
+                 current_player.play_turn()
         # show the winner
         self.winner.show
+
 
 
 if __name__ == '__main__':
