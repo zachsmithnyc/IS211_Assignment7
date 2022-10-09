@@ -94,12 +94,19 @@ class Game:
         while not self.check_winner():
             # play the game
             for player in self.players:
-                 current_player = player
-                 current_player.play_turn()
-    
+                current_player = player
+                current_player.play_turn()
+                if player.total >= 100:
+                    break
+                
         print()
         print()
         print(f"{self.winner.name} is victorious!")
+
+                
+            
+    
+       
 
 if __name__ == '__main__':
     p1 = Player("John")
