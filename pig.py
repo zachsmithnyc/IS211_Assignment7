@@ -2,7 +2,6 @@ import argparse
 import random
 import sys
 
-random.seed(0)
 
 def throw_the_die(sides=6):
     """
