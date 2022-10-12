@@ -2,6 +2,7 @@ import argparse
 import random
 import sys
 
+random.seed(0)
 
 def throw_the_die(sides=6):
     """
@@ -28,14 +29,15 @@ class Player:
         Play one turn
         """
        
+        print("-" * 50)
         print(f"Current player {self.name}")
-        print()
         print()
         turn_total = 0
         roll_hold = 'r'
         while roll_hold == "r":
             die = throw_the_die()
             if die == 1:
+                print(f"Roll: {die}")
                 print(f"{self.name} Scratched!")
                 self.show
                 break
@@ -47,6 +49,7 @@ class Player:
             # print turn_total,
             # print possible total if I hold, total + turn_total
             # print real total
+            print("-" * 50)
             print(f"Roll: {die}")
             print()
             print()
@@ -59,12 +62,12 @@ class Player:
             
             roll_hold = input("Roll(r) or Hold(h)? ").lower()
             print()
-            print()
 
 
         if roll_hold == 'h':
             # update the player's total
             self.total += turn_total
+
             
 
         if roll_hold == "x":
@@ -96,11 +99,13 @@ class Game:
             for player in self.players:
                 current_player = player
                 current_player.play_turn()
-                if player.total >= 100:
+                if current_player.total >= 100:
                     break
+                
                 
         print()
         print()
+        print("-" * 50)
         print(f"{self.winner.name} is victorious!")
 
                 
@@ -109,6 +114,8 @@ class Game:
        
 
 if __name__ == '__main__':
+    print("Welcome to Pig")
+    print()
     p1 = Player("John")
     p2 = Player("Jane")
     pig_game = Game(p1, p2)
